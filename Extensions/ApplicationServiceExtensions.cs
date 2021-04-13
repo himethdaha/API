@@ -22,8 +22,8 @@ namespace API.Extensions
         public static IServiceCollection AddApplicationServices(this IServiceCollection services, IConfiguration config)
         {
             services.AddScoped<ITokenService, TokenServices>();
-            services.AddDbContext<DataContext>(optionsBuilder
-           => optionsBuilder.UseMySql(config.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<DataContext>(options
+           => options.UseMySql(config.GetConnectionString("DefaultConnection")));
 
             return services;
         }

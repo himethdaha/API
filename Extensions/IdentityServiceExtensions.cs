@@ -28,7 +28,7 @@ namespace API.Extensions
                     {
                         //Server will sign the token and need to validate the token to check if its correct
                         ValidateIssuerSigningKey = true,
-                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["TokenKey"])),
+                        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["TokenKey"])),
                         //Additional Flags
                         //Issuer is our API server
                         ValidateIssuer = false,

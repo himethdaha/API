@@ -10,7 +10,7 @@ using System.Linq;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-
+//ALL THIS DOES IS RECIEVE A USER AND RETURN A TOKEN
 namespace API.Services
 {
     public class TokenServices : ITokenService
