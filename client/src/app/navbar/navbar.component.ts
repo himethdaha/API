@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+//import {ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { User } from '../_models/user';
 import { AccountService } from '../_services/account.service';
@@ -16,7 +18,8 @@ export class NavbarComponent implements OnInit {
   //currentUser$ : Observable<User>;
 
   //Injecting account.service.ts
-  constructor(public accountService: AccountService) { }
+  constructor(public accountService: AccountService, private router: Router,
+  /*private toastr: ToastrService*/) { }
 
   ngOnInit(): void {
     //get current user from account service
@@ -32,17 +35,21 @@ export class NavbarComponent implements OnInit {
     //Have to subscribe because observables are lazy and that's what the login method is returning
     //The response is going to be the UserDto with the username and JWT token when loggin in
     this.accountService.login(this.model).subscribe(response => {
-      console.log(response);
+      //When someone logs in take them to the memebers page
+      this.router.navigateByUrl('/members');
       //console.log(this.loggedIn);
       //this.loggedIn = true;
     }, error => {
-      console.log(error)
-    });
+      console.log(error);
+      //error inside brackets - error from api server
+      //this.toastr.error(error.error);
+    })
     
   }
 
   logout() {
     this.accountService.logout();
+    this.router.navigateByUrl('/');
     //this.loggedIn = false;
   }
 

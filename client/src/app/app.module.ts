@@ -12,6 +12,12 @@ import { Component } from '@angular/core';
 import { BsDropdownConfig } from 'ngx-bootstrap/dropdown';
 import { HomeComponent } from './home/home.component';
 import { RegisterComponent } from './register/register.component';
+import { MemberListComponent } from './members/member-list/member-list.component';
+import { MemberDetailComponent } from './members/member-detail/member-detail.component';
+import { ListsComponent } from './lists/lists.component';
+import { MessagesComponent } from './messages/messages.component';
+import { SharedModule } from './_modules/shared.module';
+//import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -19,6 +25,10 @@ import { RegisterComponent } from './register/register.component';
     NavbarComponent,
     HomeComponent,
     RegisterComponent,
+    MemberListComponent,
+    MemberDetailComponent,
+    ListsComponent,
+    MessagesComponent,
     
   ],
   imports: [
@@ -27,11 +37,12 @@ import { RegisterComponent } from './register/register.component';
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
+    SharedModule
     /*forRoot() - got some services or components it needs to initialize with the root module
      To make sure it loads all the services it needs with the root module */
-    BsDropdownModule.forRoot()
+  
   ],
-  providers: [{ provide: BsDropdownConfig, useValue: { isAnimated: true, autoClose: true } }],
+  providers: [{ provide: BsDropdownConfig }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
