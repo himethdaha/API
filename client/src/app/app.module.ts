@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,32 +17,50 @@ import { MemberDetailComponent } from './members/member-detail/member-detail.com
 import { ListsComponent } from './lists/lists.component';
 import { MessagesComponent } from './messages/messages.component';
 import { SharedModule } from './_modules/shared.module';
+import { TestErrorsComponent } from './errors/test-errors/test-errors.component';
+import { ErrorInterceptor } from './_interceptor/error.interceptor';
+import { RouterModule } from '@angular/router';
+import { NotFoundComponent } from './errors/not-found/not-found.component';
+import { ServerErrorComponent } from './errors/server-error/server-error.component';
 //import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
     HomeComponent,
-    RegisterComponent,
     MemberListComponent,
     MemberDetailComponent,
     ListsComponent,
     MessagesComponent,
-    
+    TestErrorsComponent,
+    NavbarComponent,
+    RegisterComponent,
+    NotFoundComponent,
+    ServerErrorComponent,
+
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    RouterModule,
+
     /*forRoot() - got some services or components it needs to initialize with the root module
      To make sure it loads all the services it needs with the root module */
   
   ],
-  providers: [{ provide: BsDropdownConfig }],
+
+
+
+  providers: [
+    { provide: BsDropdownConfig },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+  ],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

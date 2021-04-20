@@ -11,8 +11,8 @@
         <!--After adding the observable to account service and app component and by
   getting the user from localstorage-->
         <!--ngcontainer doesn't create html code. Also, wont interfere with styling-->
-        <ul class="navbar-nav mr-auto" *ngIf="accountService.currentUser$ | async">
-          <ng-container>
+        <ul class="navbar-nav mr-auto ">
+          <ng-container *ngIf="accountService.currentUser$ | async">
             <li class="nav-item">
             <li class="nav-item">
               <a class="nav-link" routerLink="/members" routerLinkActive="active">Members</a>
@@ -27,7 +27,9 @@
               <a class="nav-link" (click)="logout()" href="#">Logout</a>
             </li>
           </ng-container>
- 
+            <li class="nav-item">
+             <a class="nav-link" routerLink="/errors" routerLinkActive="active">Errors</a>
+            </li>
         </ul>
 
         <div class="dropdown" *ngIf="(accountService.currentUser$ | async) as user" dropdown>

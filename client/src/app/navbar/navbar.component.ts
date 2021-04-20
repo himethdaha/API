@@ -39,10 +39,6 @@ export class NavbarComponent implements OnInit {
       this.router.navigateByUrl('/members');
       //console.log(this.loggedIn);
       //this.loggedIn = true;
-    }, error => {
-      console.log(error);
-      //error inside brackets - error from api server
-      //this.toastr.error(error.error);
     })
     
   }
