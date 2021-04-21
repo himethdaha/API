@@ -13,7 +13,6 @@ import { AuthGuard } from './_guards/auth.guard';
 const routes: Routes = [
   { path: '', component: HomeComponent },
   {
-    path: '',
     //Defines when the guards and resolvers will be run
     runGuardsAndResolvers: 'always',
     canActivate: [AuthGuard],
